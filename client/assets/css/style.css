@@ -1,0 +1,64 @@
+.datetime-picker-dropdown > li.date-picker-menu div > table .btn-default {
+    border: 14px;
+}
+
+.control-group {
+    margin-bottom: 20px;
+}
+
+:required {
+    background: #fff url('../images/required.png') no-repeat 100% 0;
+}
+
+/*.ng-dirty.ng-valid {
+    border: 1px solid #55B05A !important;
+    background: url('../images/valid.png') no-repeat 100% 0;
+}*/
+
+.error-messages.ng-active {
+    background: maroon;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 15px;
+    position: relative;
+}
+
+.error-messages.ng-active:after {
+    position: absolute;
+    top: -10px;
+    content: "";
+    left: 20px;
+    border-style: solid;
+    border-color: transparent transparent maroon;
+    border-width: 5px;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+}
+.animate-repeat {
+    list-style:none;
+    box-sizing:border-box;
+}
+
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+    -webkit-transition:all linear 0.5s;
+    transition:all linear 0.5s;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+    opacity:0;
+    max-height:0;
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+    opacity:1;
+    max-height:40px;
+}

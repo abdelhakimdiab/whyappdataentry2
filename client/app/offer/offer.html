@@ -1,0 +1,141 @@
+<script type="text/ng-template" id="form-messages">
+    <div ng-message="required">Cannot be blank</div>
+    <div ng-message="minlength">Too short</div>
+    <div ng-message="maxlength">Too long</div>
+    <div ng-message="email">Invalid email</div>
+    <div ng-message="pattern">You did not enter the value in the correct format</div>
+    <div ng-message="password-characters">
+        Your password must consist of alphabetical or numeric characters.
+        It must also contain at least one special character, a number as well as an uppercase letter.
+    </div>
+</script>
+
+<!--<header class="hero-unit" id="banner">
+    <div class="container">
+        <h1>'Allo, 'Allo!</h1>
+
+        <p class="lead">Kick-start your next web app with Angular Fullstack</p>
+        <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+    </div>
+</header>-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header text-center">Offers</h1>
+            <ul id="offersList" class="nav col-md-12 col-lg-12 col-sm-12">
+                <li class="animate-repeat" ng-repeat="offer in OfferCtrl.offers | filter:{offerText: OfferCtrl.searchText}">
+                    <a href="#" tooltip="{{offer.offerText}}">
+                        <button type="button" class="delete-button"
+                                ng-click="OfferCtrl.deleteOffer(offer)">&times;</button>
+                        &nbsp;&nbsp;&nbsp;{{offer.offerText}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <form name="form" class="main-form container" ng-cloak class="ng-cloak" ng-submit="OfferCtrl.addOffer()" novalidate>
+        <div class="control-group">
+            <input class="form-control"
+                   type="text"
+                   ng-model="OfferCtrl.searchText"
+                   placeholder="Filter offers"/>
+        </div>
+        <div class="control-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="input-group">
+                        <label for="currentDate">Date: </label>
+                        <label id="currentDate">{{OfferCtrl.currentDate | date:'yyyy-MM-dd hh:mm a'}}</label>
+                    </p>
+
+                    <p class="input-group">
+                        <label for="offerSource">Offer source: </label>
+                        <label id="offerSource">{{OfferCtrl.offerSource}}</label>
+                    </p>
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-success': form.offerText.$valid && OfferCtrl.submitted,
+                                            'has-error': form.offerText.$invalid && OfferCtrl.submitted }">
+            <input class="form-control"
+                       type="text"
+                       name="offerText"
+                       id="input_offerText"
+                       ng-model="OfferCtrl.offerText"
+                       required
+                       placeholder="Offer" autofocus/>
+            <p class="help-block" ng-show="form.offerText.$error.required && OfferCtrl.submitted">
+                A offer is required
+            </p>
+        </div>
+        <div class="control-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="input-group">
+                        <input type="datetime-local" class="form-control" datetime-picker="dd MMM yyyy HH:mm"
+                               ng-model="OfferCtrl.from" is-open="OfferCtrl.isOpen.from" placeholder="From Date"/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default"
+                                    ng-click="OfferCtrl.openCalendar($event, 'from')">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p class="input-group">
+                        <input type="datetime-local" class="form-control" datetime-picker="dd MMM yyyy HH:mm"
+                               ng-model="OfferCtrl.to" is-open="OfferCtrl.isOpen.to" placeholder="To Date"/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default"
+                                    ng-click="OfferCtrl.openCalendar($event, 'to')">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" ng-model="OfferCtrl.oldPrice" placeholder="Old price"/>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" ng-model="OfferCtrl.newPrice" placeholder="New price"/>
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <textarea class="form-control"
+                   ng-model="OfferCtrl.terms"
+                   placeholder="Terms and conditions"></textarea>
+        </div>
+        <button class="btn btn-inverse btn-lg btn-register" type="submit">
+            Submit
+        </button>
+        <!--
+        <p class="input-group">
+            <input type="text" class="form-control" placeholder="Add a new offer here."
+                   ng-model="OfferCtrl.offerText">
+        <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="OfferCtrl.addOffer()">Add New</button>
+  </span>
+        </p>
+        <p class="input-group">
+            <input type="datetime-local" class="form-control" datetime-picker="dd MMM yyyy HH:mm"
+                   ng-model="OfferCtrl.creationDate" is-open="OfferCtrl.isOpen"/>
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="OfferCtrl.openCalendar($event, prop)">
+                <i class="fa fa-calendar"></i>
+            </button>
+        </span>
+        </p>-->
+
+    </form>
+</div>
